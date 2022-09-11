@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% set title = 'Create User' %}
+{% set page_active = 'users' %}
+{% block _content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="nama_lengkap">Nama Lengkap</label>
+                    <input type="teks" class="form-control" name="nama_lengkap" id="nama_lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="teks" class="form-control" name="username" id="username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="password_1">Config Password</label>
+                    <input type="password" class="form-control" name="password_1" id="password_1">
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah User</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

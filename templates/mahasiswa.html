@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% set title = 'Dafta Mahasiswa' %}
+{% set page_active = 'daftar_mahasiswa' %}
+{% block _content %}
+
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
+            <a href="{{ url_for('mahasiswa.tambah_mahasiswa') }}" class="btn btn-primary mt-3">Tambah Mahasiswa</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <th>Foto</th>
+                        <th>Nama Lengkap</th>
+                        <th>Jurusan</th>
+                        <th>Email</th>
+                        <th>Umur</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        {% for mhs in mahasiswa %}
+                        <tr>
+                            <td><img src="{{ mhs.photoURL or '/gambar/default_foto.png' }}" alt="Foto" class="w-25">
+                            </td>
+                            <td>{{ mhs.nama_lengkap}}</td>
+                            <td>{{ mhs.jurusan}}</td>
+                            <td>{{ mhs.email}}</td>
+                            <td>{{ mhs.umur}}</td>
+                            <td>
+                                {% if mhs.status == 'lulus' %}
+                                <span class="badge badge-success">Lulus</span>
+                                {% else %}
+                                <span class="badge badge-danger">Tidak Lulus</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ url_for('mahasiswa.delete_mhs', uid=mhs.id) }}"
+                                    class="btn btn-danger">Delete</a>
+                                <a href="{{ url_for('mahasiswa.edit_mhs', uid=mhs.id) }}"
+                                    class="btn btn-secondary">Edit</a>
+                                <a href="{{ url_for('mahasiswa.view_mhs', uid=mhs.id) }}"
+                                    class="btn btn-primary">View</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

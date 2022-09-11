@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% set title = 'Data User' %}
+{% set page_active = 'users' %}
+{% block _content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p>Nama Lengkap : {{ data.nama_lengkap}}</p>
+            <p>Email : {{ data.email}}</p>
+            <p>Username : {{ data.username }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
