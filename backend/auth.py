@@ -33,7 +33,7 @@ def login():
             if check_password_hash(user['password'], password):
                 session['user'] = user
                 flash('Berhasil Login', 'success')
-                return redirect(url_for('mahasiswa.daftar_mahasiswa'))
+                return redirect(url_for('index'))
             else:
                 flash('Password Anda Salah', 'danger')
                 return redirect(url_for('.login'))
@@ -42,8 +42,9 @@ def login():
             return redirect(url_for('.login'))
         
     if 'user' in session:
+        
         flash('Anda Sudah Login', 'warning')
-        return redirect(url_for('mahasiswa.daftar_mahasiswa'))
+        return redirect(url_for('index'))
         
     return render_template('login.html')
 

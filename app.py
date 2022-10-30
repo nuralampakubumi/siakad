@@ -4,6 +4,7 @@ from backend.db import db
 from backend.users import usersapp
 from backend.auth import auth
 from backend.mahasiswa import mahasiswa
+from backend.auth import login_required
 
 
 # membuat variabel menggunakan fungsi class Flask
@@ -14,6 +15,7 @@ app.register_blueprint(auth)
 app.register_blueprint(mahasiswa)
 
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html')
 
